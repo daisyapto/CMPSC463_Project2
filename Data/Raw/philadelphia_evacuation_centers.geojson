@@ -1,0 +1,244 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.1716972,
+          39.9832819
+        ]
+      },
+      "properties": {
+        "amenity": "shelter",
+        "id": 1350298844
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.0492178,
+          39.9523464
+        ]
+      },
+      "properties": {
+        "amenity": "shelter",
+        "bench": "yes",
+        "shelter_type": "pavilion",
+        "id": 5272698858
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.0253199,
+          39.9317379
+        ]
+      },
+      "properties": {
+        "amenity": "shelter",
+        "shelter_type": "gazebo",
+        "id": 5306676426
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.0306942,
+          39.9258886
+        ]
+      },
+      "properties": {
+        "amenity": "shelter",
+        "shelter_type": "gazebo",
+        "id": 5664104649
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.1095947,
+          40.1163474
+        ]
+      },
+      "properties": {
+        "amenity": "shelter",
+        "id": 5774251698
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.0258749,
+          39.9124335
+        ]
+      },
+      "properties": {
+        "amenity": "shelter",
+        "bench": "yes",
+        "bin": "no",
+        "shelter_type": "gazebo",
+        "id": 5815277137
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.1280607,
+          39.8976314
+        ]
+      },
+      "properties": {
+        "amenity": "shelter",
+        "shelter_type": "gazebo",
+        "id": 5816027133
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.231835,
+          39.9834802
+        ]
+      },
+      "properties": {
+        "amenity": "shelter",
+        "id": 6621851371
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.2175872,
+          39.9826253
+        ]
+      },
+      "properties": {
+        "amenity": "shelter",
+        "id": 6621982739
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.0288416,
+          40.0116141
+        ]
+      },
+      "properties": {
+        "amenity": "shelter",
+        "shelter_type": "gazebo",
+        "id": 7223673672
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.1712822,
+          39.983383
+        ]
+      },
+      "properties": {
+        "amenity": "shelter",
+        "shelter_type": "gazebo",
+        "id": 8917408928
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.9756462,
+          40.0582293
+        ]
+      },
+      "properties": {
+        "amenity": "shelter",
+        "shelter_type": "gazebo",
+        "id": 8925357362
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.9754732,
+          40.0587025
+        ]
+      },
+      "properties": {
+        "amenity": "shelter",
+        "shelter_type": "gazebo",
+        "id": 8925357363
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.2698406,
+          40.0017526
+        ]
+      },
+      "properties": {
+        "amenity": "shelter",
+        "shelter_type": "gazebo",
+        "id": 10830635034
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.1759952,
+          40.1199774
+        ]
+      },
+      "properties": {
+        "amenity": "shelter",
+        "shelter_type": "picnic_shelter",
+        "id": 11867214604
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.957685,
+          40.0351078
+        ]
+      },
+      "properties": {
+        "amenity": "shelter",
+        "shelter_type": "gazebo",
+        "id": 13227863329
+      }
+    }
+  ]
+}
