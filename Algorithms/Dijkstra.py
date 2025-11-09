@@ -1,5 +1,10 @@
-import pickle
-import heapq
+import pickle, heapq
+import numpy as np
+
+
+def define_starting_vertex(graph, user_position):
+    return min(graph.keys(), key=lambda x: np.linalg.norm(np.array(x) - np.array(user_position)))
+
 
 # Reference: CMPSC 463 Google Colab Notebook 9
 def dijkstra(graph, source):
@@ -33,11 +38,13 @@ def dijkstra(graph, source):
             # If a shorter path to the neighbor is found
             if distance < distances[neighbor]:
                 distances[neighbor] = distance
-                heapq.heappush(priority_queue, (distance,neighbor))
+                heapq.heappush(priority_queue, (distance, neighbor))
 
     return distances
 
+
 def connections(graph, source):
+    print(f"Connections for source: {source}:")
     distances = dijkstra(graph, source)
     connections = {}
     for item in distances:
@@ -46,14 +53,22 @@ def connections(graph, source):
 
     return connections
 
+
 ##################################
 # Test cases with points; many inf because many points unconnected
 # Graph item structure = (x1, y1) : [(x2, y2), weight]
-file = "evacuation_graph.pkl"
+file = "/Users/andrewherman/CMP463/Project 2/Data/evacuation_graph.pkl"
 with open(file, "rb") as f:
     evacuation_graph = pickle.load(f)
+graph = evacuation_graph.graph
 
-print(connections(evacuation_graph, (482201.43764657574, 4429420.039828826)))
-print(connections(evacuation_graph, (484474.41707627784, 4420967.975494733)))
-print(connections(evacuation_graph, (487867.22478463524, 4425696.30418808)))
-print(connections(evacuation_graph, (487239.42871609627, 4434768.247875405)))
+pos = [(482201.43764657574, 4429420.039828826), (484474.41707627784, 4420967.975494733),
+       (487867.22478463524, 4425696.30418808), (487239.42871609627, 4434768.247875405)]
+
+for x, y in pos:
+    dict_ = connections(graph, (x, y))
+
+    for key in dict_.keys():
+        print(f"\t{key} = {dict_[key]}")
+
+    print("=" * 100)
