@@ -1,0 +1,158 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.0,
+          39.5
+        ]
+      },
+      "properties": {
+        "name": "Unnamed",
+        "year": 1863,
+        "date": "10/3/63",
+        "wind": 0,
+        "pressure": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.699997,
+          39.5
+        ]
+      },
+      "properties": {
+        "name": "Unnamed",
+        "year": 1872,
+        "date": "10/26/72",
+        "wind": 40,
+        "pressure": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.0,
+          39.900002
+        ]
+      },
+      "properties": {
+        "name": "Unnamed",
+        "year": 1872,
+        "date": "10/26/72",
+        "wind": 40,
+        "pressure": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.800003,
+          39.799999
+        ]
+      },
+      "properties": {
+        "name": "Unnamed",
+        "year": 1903,
+        "date": "9/17/03",
+        "wind": 63,
+        "pressure": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.400002,
+          39.799999
+        ]
+      },
+      "properties": {
+        "name": "Unnamed",
+        "year": 1934,
+        "date": "6/20/34",
+        "wind": 40,
+        "pressure": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.099998,
+          39.299999
+        ]
+      },
+      "properties": {
+        "name": "Unnamed",
+        "year": 1945,
+        "date": "9/19/45",
+        "wind": 33,
+        "pressure": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.400002,
+          39.200001
+        ]
+      },
+      "properties": {
+        "name": "Bertha",
+        "year": 1996,
+        "date": "7/14/96",
+        "wind": 60,
+        "pressure": 994
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.5,
+          39.5
+        ]
+      },
+      "properties": {
+        "name": "Sandy",
+        "year": 2012,
+        "date": "10/31/12",
+        "wind": 70,
+        "pressure": 946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.599998,
+          39.799999
+        ]
+      },
+      "properties": {
+        "name": "Ida",
+        "year": 2021,
+        "date": "9/3/21",
+        "wind": 35,
+        "pressure": 997
+      }
+    }
+  ]
+}
