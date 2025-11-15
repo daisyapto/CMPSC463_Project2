@@ -7,7 +7,7 @@ import json
 
 query = """
 [out:json][timeout:25];
-area["name"="Philadelphia"]["boundary"="administrative"]->.a;
+area["wikidata"="Q1345"]->.a;
 (
   way["highway"](area.a);
 );
@@ -23,7 +23,7 @@ for element in roads_json["elements"]:
         coords = [(pt["lon"], pt["lat"]) for pt in element["geometry"]]
         features.append({"type": "Feature",
                          "geometry": {"type": "LineString", "coordinates": coords},
-                         "propertues": element.get("tags", {})})
+                         "properties": element.get("tags", {})})
 
 geojson = {"type": "FeatureCollection", "features": features}
 

@@ -31,27 +31,41 @@ class Graph:
         return None
 
 
-def build_graph(roads, flood_zones, hurricane_track, evacuation_centers):
+def build_graph(roads, flood_zones, hurricane_track):
     G = Graph()
+
+    flood_union = flood_zones.unary_union
+    hurricane_union = hurricane_track.buffer(50).unary_union
 
     for _, row in roads.iterrows():
         coords = list(row.geometry.coords)
+
         for i in range(len(coords) - 1):
-            a, b = coords[i], coords[i + 1]
-            distance = np.linalg.norm(np.array(a) - np.array(b))
+            # Get longitude and latitude of each coordinate
+            ax, ay = coords[i][0], coords[i][1]
+            bx, by = coords[i + 1][0], coords[i + 1][1]
+
+            a = (ax, ay)
+            b = (bx, by)
+
+            # String that connects the two points
             line = LineString([a, b])
+
+            # Distance in meters
+            distance = np.linalg.norm(np.array(a) - np.array(b))
 
             # Multiplier on risk levels based on hurricane, flood, and evac center distance
             risk_factor = 1
 
-            # Risk of Flood
-            if flood_zones.intersects(line).any():
+            # Road intersections with flood zones
+            if flood_union.intersects(line):
                 risk_factor += 1.5
 
-            if hurricane_track.buffer(0.02).intersects(line).any():
+            # Road intersections with hurricane track
+            if hurricane_union.intersects(line):
                 risk_factor += 1.0
 
             weight = distance * risk_factor
 
             G.add_edge(a, b, weight)
-    return G.graph
+    return G
