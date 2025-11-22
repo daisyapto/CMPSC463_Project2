@@ -19,56 +19,89 @@ class Graph:
     def get_neighbors(self, node):
         return self.graph.get(node, []).items()
 
-    def dijkstra(self, start, goal):
+    def dijkstra(self, source):
+        if source not in self.graph:
+            source = self.snap_to_nearest(source)
+
         # Initialize the priority queue with the source node
-        priority_queue = [(0, start)]  # (distance, vertex)
+        priority_queue = [(0, source)]  # (distance, vertex)
 
         # Distances dictionary to store the shortest path lengths
         distances = {vertex: float('inf') for vertex in self.graph}
-        distances[start] = 0
+        distances[source] = 0
 
         previous = {vertex: None for vertex in self.graph}
+
+        explored = set()
 
         while priority_queue:
             # Extract the vertex with the smallest distance from the priority queue
             current_distance, current_vertex = heapq.heappop(priority_queue)
 
-            if current_vertex == goal:
-                break
-
             # If the vertex is already explored, skip it
             if current_distance > distances[current_vertex]:
                 continue
 
+            explored.add(current_vertex)
+
             # Update distances for neighbors of the current vertex
-            for neighbor, weight in self.graph[current_vertex]:
+            for neighbor, weight in self.graph[current_vertex].items():
+                if neighbor in explored:
+                    continue
+
                 new_dist = current_distance + weight  # Current total weight to node
-                if new_dist < distances[neighbor] or neighbor not in distances:  # shorter path to neighbor found
+
+                if new_dist < distances[neighbor]:  # shorter path to neighbor found
                     distances[neighbor] = new_dist  # update distance
                     previous[neighbor] = current_vertex  # update previous node
                     heapq.heappush(priority_queue, (new_dist, neighbor))  # update priority queue
 
-        if goal not in distances:
-            return float('inf'), None
+        filtered_distances = {k: w for k, w in distances.items() if w < 0.2}
+        return filtered_distances, previous
+
+    def get_path(self, previous, goal):
+        if goal not in self.graph:
+            print(f"Snapping {goal} to nearest node...")
+            goal = self.snap_to_nearest(Point(goal[1], goal[0]))
+            print(f"\t{goal}")
 
         # reconstruct path
         path = []
         node = goal
+        visited_path = set()
         while node is not None:
+            if node in visited_path:
+                print("Cycle detected.")
+                break
+            visited_path.add(node)
             path.append(node)
             node = previous[node]
         path.reverse()
+        return path
 
-        return distances[goal], path
+    def inside_philly(self, lat, lon):
+        return (
+                39.86 <= lat <= 40.14 and
+                -75.30 <= lon <= -74.96
+        )
 
     # Pass source as a Point(y,x)
     def snap_to_nearest(self, source):
+        # Not a point
         if not isinstance(source, Point):
             raise TypeError("Source must be a shapely Point object.")
+
+        # verify near philly
+        if not self.inside_philly(lon=source.y, lat=source.x):
+            print("Source is outside Philadelphia.")
+            return None
 
         return min(
             self.graph.keys(),
             key=lambda n: Point(n[1], n[0]).distance(source))
+
+    def get_k_nearest_paths(self, k):
+        pass
 
     def __str__(self):
         return f"GRAPH DETAILS\nKeys: {len(self.graph.keys())}"
