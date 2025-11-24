@@ -119,9 +119,11 @@ class Graph:
         matrixForPrim = [[0 for _ in range(evacCenters)] for _ in range(evacCenters)]
 
         coords_Evac_Centers = []
+        print(evac[0])
+        print(type(evac[0]))
         for item in evac:
             coords_Evac_Centers.append((item.x, item.y))
-        # print(coords_Evac_Centers)
+        print(coords_Evac_Centers)
         matrix = [[0 for _ in range(len(coords_Evac_Centers))] for _ in range(len(coords_Evac_Centers))]
 
         for i in range(len(coords_Evac_Centers)):
