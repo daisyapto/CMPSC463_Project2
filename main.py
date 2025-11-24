@@ -6,7 +6,6 @@ import random
 from Visualization.mapFoliium import draw_route
 import pickle
 
-# Add file paths here
 roads = gpd.read_file("")
 floods = gpd.read_file("")
 hurricanes = gpd.read_file("")
@@ -47,5 +46,8 @@ draw_route(user_pos, random_evac, path)
 
 ##### Uncomment the following lines to test Prim's ######
 
-test = (-75.21306878970346, 40.02152944119314)
+test = Point(-75.21306878970346, 40.02152944119314)
+test = (test.x, test.y)
 print(G.primMST(evac.geometry, test))
+
+#print(G.graph)
