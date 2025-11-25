@@ -1,5 +1,8 @@
 import heapq
+import math
+import sys
 from shapely.geometry import Point
+import pickle
 
 
 class Graph:
@@ -18,6 +21,9 @@ class Graph:
 
     def get_neighbors(self, node):
         return self.graph.get(node, []).items()
+
+    def distance(self, p1, p2):
+        return math.sqrt((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2)
 
     def dijkstra(self, source):
         if source not in self.graph:
@@ -105,3 +111,44 @@ class Graph:
 
     def __str__(self):
         return f"GRAPH DETAILS\nKeys: {len(self.graph.keys())}"
+
+    # Reference: https://www.geeksforgeeks.org/dsa/prims-minimum-spanning-tree-mst-greedy-algo-5/
+    def primMST(self, evac, source):
+        ################### Building adjacency matrix from Facilities ##################
+        evacCenters = len(evac)
+
+        coords_Evac_Centers = []
+        print(evac[0])
+        print(type(evac[0]))
+        for item in evac:
+            coords_Evac_Centers.append((item.x, item.y))
+        print(coords_Evac_Centers)
+        matrix = [[0 for _ in range(len(coords_Evac_Centers))] for _ in range(len(coords_Evac_Centers))]
+
+        for i in range(len(coords_Evac_Centers)):
+            for j in range(len(coords_Evac_Centers)):
+                matrix[i][j] = self.distance(coords_Evac_Centers[i], coords_Evac_Centers[j])
+        # print(matrix)
+
+        visited = [False] * len(coords_Evac_Centers)
+        weight = 0
+        tree = []
+        # Initialize the priority queue with the source node
+        priority_queue = [(0, source)]  # (distance, vertex)
+
+        while priority_queue:
+            dist, vertex = heapq.heappop(priority_queue)
+            vertexIndex = coords_Evac_Centers.index(vertex)
+            if visited[vertexIndex]:
+                continue
+            weight += dist
+            visited[vertexIndex] = True
+
+            for connection in matrix[vertexIndex]:
+                if connection == 0:
+                    continue
+                if not visited[matrix[vertexIndex].index(connection)]:
+                    heapq.heappush(priority_queue, (connection, coords_Evac_Centers[matrix[vertexIndex].index(connection)]))
+                    tree.append((coords_Evac_Centers[vertexIndex], coords_Evac_Centers[matrix[vertexIndex].index(connection)]))
+
+        return tree, weight
