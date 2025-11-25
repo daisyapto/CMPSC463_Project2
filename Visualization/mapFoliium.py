@@ -5,9 +5,9 @@ from folium import GeoJson
 
 def draw_route(user_node, evac_node, path, prim_nodes):
     # Read in data
-    roads = gpd.read_file("/Users/daisyaptovska/Desktop/psu/cmpsc463/project2/Data/Street_Centerline.geojson")
-    floods = gpd.read_file("/Users/daisyaptovska/Desktop/psu/cmpsc463/project2/Data/Floods.geojson")
-    evac = gpd.read_file("/Users/daisyaptovska/Desktop/psu/cmpsc463/project2/Data/Facilities.geojson")
+    roads = gpd.read_file("")
+    floods = gpd.read_file("")
+    evac = gpd.read_file("")
 
     # Convert to EPSG:4326
     roads = roads.to_crs(epsg=4326)[["geometry"]]
