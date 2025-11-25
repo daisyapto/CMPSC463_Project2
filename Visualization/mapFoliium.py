@@ -3,11 +3,11 @@ import geopandas as gpd
 from folium import GeoJson
 
 
-def draw_route(user_node, evac_node, path):
+def draw_route(user_node, evac_node, path, prim_nodes):
     # Read in data
-    roads = gpd.read_file("/Users/andrewherman/CMP463/SafetyGPS/Data/Processed Data/Street_Centerline.geojson")
-    floods = gpd.read_file("/Users/andrewherman/CMP463/SafetyGPS/Data/Processed Data/Floods.geojson")
-    evac = gpd.read_file("/Users/andrewherman/CMP463/SafetyGPS/Data/Processed Data/Facilities.geojson")
+    roads = gpd.read_file("/Users/daisyaptovska/Desktop/psu/cmpsc463/project2/Data/Street_Centerline.geojson")
+    floods = gpd.read_file("/Users/daisyaptovska/Desktop/psu/cmpsc463/project2/Data/Floods.geojson")
+    evac = gpd.read_file("/Users/daisyaptovska/Desktop/psu/cmpsc463/project2/Data/Facilities.geojson")
 
     # Convert to EPSG:4326
     roads = roads.to_crs(epsg=4326)[["geometry"]]
@@ -61,6 +61,11 @@ def draw_route(user_node, evac_node, path):
         icon=folium.Icon(color="green", icon="info-sign"),
     ).add_to(m)
     # popup=f"Evac Center<br>Distance = {distances:.2f}",
+
+    # New addition for prim node line, unsure how to map Prim since so many node visits
+    folium.PolyLine(
+        locations=[(lat, lon) for (lon, lat) in prim_nodes], color='blue', weight=2, opacity=0.8
+    ).add_to(m)
 
     folium.LayerControl().add_to(m)
     m.save("evac_map2.html")
