@@ -1,67 +1,29 @@
-import geopandas as gpd
+import random, pickle
 from shapely.geometry import Point
-from Algorithms.Graph import Graph
-from shapely.ops import unary_union
-import random
-from Visualization.mapFoliium import draw_route
-import pickle
+from Visualization.Full_Map import draw_full_map
+from Algorithms.K_Nearest import k_nearest_evacuation_centers
+from Algorithms.Prims import prim_mst
 
-roads = gpd.read_file("")
-floods = gpd.read_file("")
-hurricanes = gpd.read_file("")
-evac_centers = gpd.read_file("")
+with open("Data/Pickle/hazard_graph.pkl", "rb") as f:
+    graph = pickle.load(f)
 
-roads = roads.to_crs(epsg=4326)
-floods = floods.to_crs(epsg=4326)
-evac = evac_centers.to_crs(epsg=4326)
+with open("Data/Pickle/evac_kdtree.pkl", "rb") as f:
+    tree, evacuation_coords, snapped_centers = pickle.load(f)
 
-flood_union = unary_union(floods.geometry)
-hurricane_union = unary_union(hurricanes.geometry)
+center_city = (-75.1575, 39.9509)
+source = Point(center_city[0], center_city[1])
 
-G = Graph()
-with open("hazard_graph.pkl", "rb") as f:
-    loaded_graph = pickle.load(f)
+# Random source
+# random_lat = random.uniform(39.95, 40.04)
+# random_lon = random.uniform(-75.05, -75.00)
+# source = Point(random_lon, random_lat)
 
-if loaded_graph:
-    G.graph = loaded_graph
 
-lat = float(input("Enter your latitude coordinate: "))
-lon = float(input("Enter your longitude coordinate: "))
-# user_pos = Point(39.95, -75.16)  # lat, lon = y,x
-user_pos = Point(lat, lon)  # lat, lon = y,x
-distances, previous = G.dijkstra(user_pos)
-#print(previous)
+# K nearerst evacuation centers
+K = 8
+routes = k_nearest_evacuation_centers(graph, source, snapped_centers, K, tree)
 
-"""
-temp_all_paths = []
-for center in evac.geometry:
-    goal = (center.x, center.y)
-    path = G.get_path(previous, goal)
-    print(path)
-    temp_all_paths.append(path)
-"""
+# Get MST edges
+mst_edges = prim_mst(evacuation_coords)
 
-random_evac = random.choice(evac.geometry)
-path = G.get_path(previous, (random_evac.x, random_evac.y))
-print("Path", path)
-
-##### Uncomment the following lines to test Prim's ######
-
-test = Point(-75.21306878970346, 40.02152944119314)
-lastPrim = Point(-75.20932498164714, 40.07782488785368)
-test1 = (test.x, test.y)
-prim = G.primMST(evac.geometry, test1)
-order = []
-for item in prim[0]:
-    order.append(item[1])
-# Debug statements
-print(len(order))
-print(type(order[0]))
-print(len(path))
-print(type(path[0]))
-print(len(evac.geometry))
-
-# Added to draw_route function parameter for the order of the nodes for Prim's but it is 190,000+ node visits since its MST, not path
-# Doesn't load into HTML evac_map2.html
-# Unsure how to fix
-draw_route(user_pos, random_evac, path, order)
+draw_full_map(source, routes, mst_edges, save_file="ui/full_map_merge_test3.html")
