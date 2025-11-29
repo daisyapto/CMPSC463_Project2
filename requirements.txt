@@ -1,0 +1,6 @@
+shapely
+flask
+folium
+geopandas
+pandas
+scipy
