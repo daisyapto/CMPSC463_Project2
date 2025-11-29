@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evacuation Centers</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Find Nearest Evacuation Centers</h1>
+
+<form id="evac-form" class="form">
+    <p class="form-title">Find Safe Evacuation Routes</p>
+
+    <!-- Latitude -->
+    <div class="input-container">
+        <input id="lat"
+               type="text"
+               placeholder="Enter Latitude"
+               required>
+    </div>
+
+    <!-- Longitude -->
+    <div class="input-container">
+        <input id="lon"
+               type="text"
+               placeholder="Enter Longitude"
+               required>
+    </div>
+
+    <!-- K Value -->
+    <div class="input-container">
+        <input id="k"
+               type="number"
+               min="1"
+               max="10"
+               value="3"
+               placeholder="Number of Evac Centers"
+               required>
+    </div>
+
+
+    <button type="submit" class="submit">
+        Find Routes
+    </button>
+
+</form>
+
+
+<!-- ✅ New Loader Overlay -->
+<div class="loader-container" id="loader" style="display:none;">
+    <div class="loader">
+        <div class="loader-text">Preparing map...</div>
+
+        <div class="progress-bar">
+            <div class="load" id="load-bar"></div>
+        </div>
+    </div>
+</div>
+
+<iframe id="map-frame" width="100%" height="600"></iframe>
+
+<script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
+</body>
+</html>
