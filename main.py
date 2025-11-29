@@ -5,6 +5,15 @@ from Algorithms.K_Nearest import k_nearest_evacuation_centers
 from Algorithms.Prims import prim_mst
 from flask import Flask, render_template, request, redirect, url_for
 
+"""
+References:
+https://www.geeksforgeeks.org/python/flask-creating-first-simple-application/
+https://flask.palletsprojects.com/en/stable/quickstart/#a-minimal-application
+https://www.w3schools.com/html/html_forms.asp
+https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit
+Chat GPT-- Flask explanation
+"""
+
 app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 
