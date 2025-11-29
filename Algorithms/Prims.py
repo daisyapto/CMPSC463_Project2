@@ -22,14 +22,14 @@ def prim_mst(evac_coords):
 
         # Add the current node to the MST
         if parent[current_node] != -1:
-            mst_edges.append((evac_coords[parent[u]], evac_coords[current_node]))
+            mst_edges.append((evac_coords[parent[current_node]], evac_coords[current_node]))
 
-            # Update best edges to neighbors
-            for neighbor in range(n):
-                if not visited[neighbor]:
-                    dist = get_distance(evac_coords[current_node], evac_coords[neighbor])
-                    # Smaller distance found, update parent
-                    if dist < smallest_edge[neighbor]:
-                        smallest_edge[neighbor] = dist
-                        parent[neighbor] = current_node
+        # Update best edges to neighbors
+        for neighbor in range(n):
+            if not visited[neighbor]:
+                dist = get_distance(evac_coords[current_node], evac_coords[neighbor])
+                # Smaller distance found, update parent
+                if dist < smallest_edge[neighbor]:
+                    smallest_edge[neighbor] = dist
+                    parent[neighbor] = current_node
     return mst_edges
