@@ -1,4 +1,4 @@
-# CMPSC463_Project2
+# CMPSC 463 (Design & Analysis of Algorithms) - Project 2
 
 ## Philadelphia Evaucation GPS
 In this project, we developed an application that reads open source data on Philadelphia's streets and weather events. From this data, we can process the weather events
