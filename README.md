@@ -14,4 +14,8 @@ in a Folium map HTML file that provides them a highlighted map visualization of 
 - Hurricanes.geojson
 - Street_Centerline.geojson
 
-https://philadelphia-weather-evacuation-gps.onrender.com/
+To run this application, follow these steps:
+- Download the entire repo
+- Install all the packages in requirements.txt
+- Run run.py in an IDE
+- Open in browser by using terminal local link to use the application
