@@ -4,4 +4,3 @@ folium
 geopandas
 pandas
 scipy
-gunicorn
