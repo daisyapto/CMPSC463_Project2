@@ -18,4 +18,4 @@ in a Folium map HTML file that provides them a highlighted map visualization of 
 - Download the entire repo
 - Install all the packages in requirements.txt
 - Run run.py in an IDE
-- Open in browser by using terminal local link to use the application
+- Automatically opened in browser or by using local terminal link (after running run.py) to use the application
