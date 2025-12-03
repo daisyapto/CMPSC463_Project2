@@ -21,3 +21,4 @@ in a Folium map HTML file that provides them a highlighted map visualization of 
 - Automatically opened in browser or by using local terminal link (after running run.py) to use the application
 
 Render hosting link: https://philadelphia-weather-evacuation-gps.onrender.com/ (does not load with free version of Render hosting; more information in CMPSC463_Project2.pdf report document)
+Demo video: URL link to Kaltura video in CMPSC463_Project2.pdf report document
