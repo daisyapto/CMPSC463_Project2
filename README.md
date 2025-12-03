@@ -19,3 +19,5 @@ in a Folium map HTML file that provides them a highlighted map visualization of 
 - Install all the packages in requirements.txt
 - Run run.py in an IDE
 - Automatically opened in browser or by using local terminal link (after running run.py) to use the application
+
+Render hosting link: https://philadelphia-weather-evacuation-gps.onrender.com/ (doesn't load with free version of Render; more information in CMPSC463_Project2 report document)
